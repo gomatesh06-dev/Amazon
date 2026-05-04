@@ -1,1 +1,24 @@
 // Added feature 1
+pipeline {
+    agent any 
+    
+    tools {
+        // This tells Jenkins to use the Maven version you configured in Global Tool Configuration
+        maven 'Maven3' 
+    }
+
+    stages {
+        stage('Clean') {
+            steps {
+                // Running a shell command to clean the project
+                sh 'mvn clean'
+            }
+        }
+        stage('Build') {
+            steps {
+                // Running the actual build
+                sh 'mvn install -DskipTests'
+            }
+        }
+    }
+}
