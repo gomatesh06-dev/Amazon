@@ -2,10 +2,7 @@
 pipeline {
     agent any 
     
-    tools {
-        // This tells Jenkins to use the Maven version you configured in Global Tool Configuration
-        maven 'Maven3' 
-    }
+   
 
     stages {
         stage('Clean') {
