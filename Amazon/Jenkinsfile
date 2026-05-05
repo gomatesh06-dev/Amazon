@@ -8,13 +8,13 @@ pipeline {
         stage('Clean') {
             steps {
                 // Running a shell command to clean the project
-               sh 'mvn -f amazon/pom.xml clean install'
+               sh 'mvn -f Amazon/pom.xml clean install'
             }
         }
         stage('Build') {
             steps {
                 // Running the actual build
-                sh 'mvn -f amazon/pom.xml install -DskipTests'
+                sh 'mvn -f Amazon/pom.xml install -DskipTests'
             }
         }
    
