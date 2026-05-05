@@ -20,5 +20,18 @@ pipeline {
                 sh 'mvn install -DskipTests'
             }
         }
+   
+}
+    post {
+        success {
+            slackSend(channel: '#devops-builds', 
+                      color: 'good', 
+                      message: "✅ Build Successful: ${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})")
+        }
+        failure {
+            slackSend(channel: '#devops-builds', 
+                      color: 'danger', 
+                      message: "❌ Build Failed: ${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})")
+        }
     }
 }
